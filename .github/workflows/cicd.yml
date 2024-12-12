@@ -17,3 +17,13 @@ jobs:
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
       - name: Push image to docker hub
         run: docker push axixatechnologies/nodejs-app:latest
+
+  deploy:
+    runs-on: [self-hosted]
+    steps:
+      - name: Pull Docker image
+        run: docker pull axixatechnologies/nodejs-app:latest
+      - name: Delete old container if exist
+        run: docker rm -f nodejs-app-container
+      - name: Run docker container
+        run: docker run -d -p 5000:5000 nodejs-app-container axixatechnologies/nodejs-app
