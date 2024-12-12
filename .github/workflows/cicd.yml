@@ -3,13 +3,11 @@ name: Deploy Node Application
 on:
   push:
     branches:
-      - "master"
+      - master
 
 jobs:
   build:
     runs-on: [ubuntu-latest]
-  steps:
-    # - name: Checkout Source Code
-    #   uses: actions/checkout@v4
-    - name: Test Job
-      run: echo Hello
+    steps:
+      - name: Test Job
+        run: echo Hello
