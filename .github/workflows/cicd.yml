@@ -27,4 +27,4 @@ jobs:
       - name: Delete old container if exist
         run: docker rm -f nodejs-app-container
       - name: Run docker container
-        run: docker run -d -p 5000:5000 nodejs-app-container axixatechnologies/nodejs-app
+        run: docker run -d -p 5000:5000 --name nodejs-app-container axixatechnologies/nodejs-app
